@@ -12,15 +12,33 @@ template <class T> void printGrid(Grid<T> & locations);
 
 
 
-
 int countNearbyMines(Grid<bool> & mines, int row, int col) {
-  return 0;
-}
+  int countOfMines = 0;
+  for (int r = row -1; r <= row + 1; r++) {
 
+    for (int c = col -1; c <= col + 1; c++) {
+
+      if (mines.inBounds(r, c)) {
+
+        if (mines[r][c]) {
+          countOfMines++;
+        }
+      }
+    }
+  }
+  return countOfMines;
+}
 
 
 void fixCounts(Grid<bool> & mines, Grid<int> & counts) {
 
+  counts.resize(mines.numRows(), mines.numCols());
+
+  for (int r = 0; r < mines.numRows(); r++) {
+    for (int c = 0; c < mines.numCols(); c++) {
+      counts[r][c] = countNearbyMines(mines, r, c);
+    }
+  }
 }
 
 
@@ -29,8 +47,11 @@ void fixCounts(Grid<bool> & mines, Grid<int> & counts) {
 
 
 int main() {
-  Grid<int> mineCounts(6, 6);
   Grid<bool> mineLocations(6, 6);
+  Grid<int> mineCounts;
+
+  Grid<int> mineCounts2 = mineCounts;
+
 
   mineLocations[0][0] = true;
   mineLocations[0][5] = true;

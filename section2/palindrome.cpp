@@ -1,17 +1,36 @@
 #include <iostream>
 #include <string>
 #include <cctype>
-#include "strlib.h"
+#include "stack.h"
 #include "lexicon.h"
 using namespace std;
 
+// #define SOLUTIONS true
+
 
 #ifdef SOLUTIONS
-#include "solutions.cpp"
+// #include "solutions.cpp"
 #else
 
+string reverseString(string str) {
+
+  Stack<char> stack;
+
+  for (int i = 0; i < str.length(); i++) {
+    stack.push(str[i]);
+  }
+
+  str = "";
+
+  while (!stack.isEmpty()) {
+    str += stack.pop();
+  }
+  return str;
+}
+
+
 bool isPalindrome(string str) {
-  return false;
+  return str == reverseString(str);
 }
 
 #endif
@@ -21,7 +40,7 @@ int main() {
   Lexicon english("EnglishWords.dat");
 
   foreach (string word in english) {
-   if (isPalindrome(word))
-     cout << word << endl;
+    if (isPalindrome(word))
+      cout << word << endl;
   }
 }
