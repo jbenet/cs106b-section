@@ -9,7 +9,7 @@ using namespace std;
 
 
 #ifdef SOLUTIONS
-// #include "solutions.cpp"
+#include "solutions.cpp"
 #else
 
 string reverseString(string str) {
