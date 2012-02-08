@@ -5,6 +5,7 @@
 #include "simpio.h"
 #include "vector.h"
 #include "strlib.h"
+#include "lexicon.h"
 
 using namespace std;
 
@@ -31,7 +32,7 @@ bool isMeasurable(int target, Vector<int> &weights) {
 
 // Problem 4
 
-
+static int kMinWordLength = 4;
 bool findAnagramWithFixedPrefix(string prefix,
                                 string rest,
                                 Lexicon &lex,

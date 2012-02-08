@@ -8,14 +8,15 @@
 
 using namespace std;
 
-static int kMinWordLength = 4;
-
-bool findAnagram(string letters, Lexicon &lex, Vector<string> & words);
-
 #ifdef SOLUTIONS
 #include "solutions.cpp"
 #else
 
+static int kMinWordLength = 4;
+
+bool findAnagram(string letters, Lexicon &lex, Vector<string> & words) {
+  return false;
+}
 
 #endif
 
