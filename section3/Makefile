@@ -16,7 +16,7 @@ FWKS_ = $(FWKS:%=-framework %)
 
 FLAGS_ = $(FLAGS) $(LD_PATHS_) $(LIBS_) $(INC_) $(FWKS_)
 
-TARGETS = 1-weights
+TARGETS = 1-weights 4-anagrams
 SOLUTIONS = $(TARGETS:%=%_sol)
 
 

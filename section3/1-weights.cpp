@@ -15,19 +15,24 @@ using namespace std;
 #include "solutions.cpp"
 #else
 
+bool isMeasurable(int target, Vector<int> weights) {
+  if (target == 0)
+    return true;
 
-bool isMeasurable(int target, Vector<int> &weights) {
-  if (weights.isEmpty()) {
-    return target == 0;
-  }
+  if (weights.size() == 0)
+    return false;
 
-  int first = weights[0];
-  Vector<int> rest = weights;
-  rest.removeAt(0);
-  return isMeasurable(target, rest)
-      || isMeasurable(target - first, rest)
-      || isMeasurable(target + first, rest);
+  int w = weights[0];
+  weights.removeAt(0);
+
+
+  return isMeasurable(target - w, weights)
+      || isMeasurable(target,     weights)
+      || isMeasurable(target + w, weights);
+
 }
+
+
 
 #endif
 
